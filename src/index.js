@@ -8,3 +8,7 @@ const bot = new Aoijs.Bot(config.Bot);
 const loader = new Aoijs.LoadCommands(bot);
 loader.load(bot.cmd,'./src/commands/')
 require('./colors.js')(loader)
+const files = fs.readdirSync('./src/prev').filter(file => file.endsWith('.js'))
+files.forEach(x => {
+  require(`./prev/${x}`)(bot)
+});
